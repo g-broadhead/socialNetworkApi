@@ -16,7 +16,7 @@ const Thought = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'reaction'
   }]
-}, { timestamps: true },)
+}, { timestamps: true })
 
 Thought.virtual('reactionCount').get(function () {
   return this.reactions.length
