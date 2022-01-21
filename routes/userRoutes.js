@@ -13,7 +13,7 @@ router.get('/users/:id', async function (req, res) {
   res.json(user)
 })
 
-// POST  User
+// POST User
 router.post('/users', async function (req, res) {
   const user = await User.create(req.body)
   res.json(user)
@@ -33,14 +33,14 @@ router.delete('/users/:id', async function (req, res) {
 })
 
 // Add a Friend
-router.post('/user/:userId/friend/:friendId', async function (req, res) {
+router.post('/users/:userId/friend/:friendId', async function (req, res) {
   const friend = await User.findByIdAndUpdate(req.params.userId, { $addToSet: { friends: req.params.friendId } })
   const friend2 = await User.findByIdAndUpdate(req.params.friendId, { $addToSet: { friends: req.params.userId } })
   res.sendStatus(200)
 })
 
 // Delete a Friend
-router.delete('/user/:userId/friend/:friendId', async function (req, res) {
+router.delete('/users/:userId/friend/:friendId', async function (req, res) {
   const friend = await User.findByIdAndUpdate(req.params.userId, { $pull: { friends: req.params.friendId } })
   const friend2 = await User.findByIdAndUpdate(req.params.friendId, { $pull: { friends: req.params.userId } })
   res.sendStatus(200)
