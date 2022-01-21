@@ -10,7 +10,7 @@ router.post('/reactions', async function (req, res) {
   res.json(reaction)
 })
 
-// DELETE one Reaction by id
+// DELETE Reaction by id
 router.delete('/reactions/:id', async function (req, res) {
   await Reaction.findByIdAndDelete(req.params.id)
   res.sendStatus(200)

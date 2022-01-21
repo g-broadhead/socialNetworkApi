@@ -7,26 +7,26 @@ router.get('/users', async function (req, res) {
   res.json(users)
 })
 
-// Get ONE User by id
+// Get ONE User
 router.get('/users/:id', async function (req, res) {
   const user = await User.findById(req.params.id).populate('thoughts')
   res.json(user)
 })
 
-// POST a User
+// POST  User
 router.post('/users', async function (req, res) {
   const user = await User.create(req.body)
   res.json(user)
 })
 
-// PUT one User by id
+// PUT User by id
 
 router.put('/users/:id', async function (req, res) {
   await User.findByIdAndUpdate(req.params.id, req.body)
   res.sendStatus(200)
 })
 
-// DELETE one User by id
+// DELETE User by id
 router.delete('/users/:id', async function (req, res) {
   await User.findByIdAndDelete(req.params.id)
   res.sendStatus(200)

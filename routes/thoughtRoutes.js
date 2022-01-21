@@ -22,13 +22,13 @@ router.post('/thoughts', async function (req, res) {
   res.json(thought)
 })
 
-// PUT one thought by id
+// PUT thought by id
 router.put('/thoughts/:id', async function (req, res) {
   await Thought.findByIdAndUpdate(req.params.id, req.body)
   res.sendStatus(200)
 })
 
-// DELETE one thought by id
+// DELETE thought by id
 router.delete('/thoughts/:id', async function (req, res) {
   await Thought.findByIdAndDelete(req.params.id)
   res.sendStatus(200)
